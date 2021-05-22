@@ -1,26 +1,25 @@
 {
-  "name": "may2021",
+  "name": "poll_server",
   "version": "1.0.0",
-  "description": "Atlas",
-  "main": "app.js",
-  "scripts": {
+  "description": "PollProjectServer",
+  "main": "app.js","scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
     "dev": "nodemon"
   },
-  "author": "M. Neyer",
+  "author": "Steve Emerson (Team 2)",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^1.19.4"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "pg": "^8.6.0",
+    "pg": "^8.5.1",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^5.22.3"
+    "sequelize": "^5.21.1"
   }
 }
+

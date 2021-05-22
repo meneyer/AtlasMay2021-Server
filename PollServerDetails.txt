@@ -1,0 +1,30 @@
+USER DATA MODEL
+id 		type: INTEGER	allowNull: False
+userName	type: STRING	allowNull: False
+password	type: STRING	allowNull: False
+isAdmin		type: BOOLEAN	allowNull: False
+pollsVotedOn	type: ARRAY of INTEGER	allowNull: False
+
+POLL DATA MODEL
+id   		type: INTEGER 	allowNull: false
+question  	type: STRING	allowNull: false
+published	type: BOOLEAN	allowNull: false
+
+OPTION DATA MODEL
+id   		type: INTEGER 	allowNull: false
+text	 	type: STRING	allowNull: false
+votes		type: INTEGER	allowNull: false
+pollId		type: INTEGER	allowNull: false	
+
+ENDPOINTS
+<site url>/user/create  POST		create new user 
+<site url>/user/login  POST		login returning user
+<site url>/poll  POST 			create a poll*
+<site url>/poll  GET   			gets all polls*
+<site url>/poll/<id>  PUT   		modify a single poll*
+<site url>/poll/<id>  DELETE   		delete a single poll*
+<site url>/option  POST 		create an option*
+<site url>/option GET   		gets all options*
+<site url>/option/<id>  PUT   		modify a single option*
+<site url>/option/<id>  DELETE   	delete a single option*
+
