@@ -2,6 +2,7 @@ const router = require('express').Router();
 const User = require('../db').import('../models/user');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const validateSession = require('../middleware/validate-session');
 
 
 /****** USER CREATE ******/
@@ -74,6 +75,29 @@ router.post('/login', function(req, res){
   .catch(err => {
     return res.status(500).json({error: err, message:"Failed to login user"})
   });
+});
+
+
+/****** USER UPDATE ******/
+router.put('/:id',validateSession, function(req, res){
+  const updateUserInfo = {
+    // passwordhash: bcrypt.hashSync(req.body.password, 12),
+    // userName: req.body.userName,
+    // isAdmin: req.body.isAdmin,
+    pollsVotedOn: req.body.pollsVotedOn
+  }
+
+  const query = {where: {id: req.params.id}}
+
+  User.update(updateUserInfo, query)
+    .then(update => {
+      if(update[0] === 0){
+        return res.status(200).send('No matching user found.')
+      }else{
+        return res.status(200).json({data: update, message: `${update[0]} User updated`})
+      }
+    })
+    .catch(err => res.status(500).json({error: err}))
 });
 
 
