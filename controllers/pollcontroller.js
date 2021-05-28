@@ -41,8 +41,15 @@ router.put('/:id', validateSession, function(req, res){
   .catch(err => res.status(500).json({error: err}));
 });
 
-// /******** RETRIEVE ALL POLLS *********/
+/******** RETRIEVE ALL POLLS *********/
 router.get('/', validateSession, function(req, res){
+  Poll.findAll()
+  .then(polls => res.status(200).json(polls))
+  .catch(err => res.status(500).json({error: err}))
+});
+
+/******* RETRIEVE ALL  POLLS UNPROTECTED ********/
+router.get('/polls', function(req, res){
   Poll.findAll()
   .then(polls => res.status(200).json(polls))
   .catch(err => res.status(500).json({error: err}))
