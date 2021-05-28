@@ -99,6 +99,20 @@ router.put('/:id',validateSession, function(req, res){
     })
     .catch(err => res.status(500).json({error: err}))
 });
+/*Get a user from the session token */
 
+
+router.get("/",validateSession,async(req,res)=>{
+  try{
+    const result=await User.findOne({where:{id:req.user.id}})
+    if(result===null){
+      res.status(403).json({message:"no such user"})
+    } else {
+      res.status(200).json(result)
+    }
+  } catch (error){
+    res.status(500).json({error:error})
+  }
+})
 
 module.exports = router;
