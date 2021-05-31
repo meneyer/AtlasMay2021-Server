@@ -1,7 +1,8 @@
+require("dotenv").config();
+
 let express = require('express');
 let app = express();
 let sequelize = require('./db');
-require("dotenv").config();
 
 sequelize.sync();
 app.use(express.json());
@@ -22,7 +23,7 @@ app.use('/user', user);
 app.use('/poll', poll);
 app.use('/option', option);
 
-app.listen(3000, function() {
-  console.log("Poll server is up on port 3000")
+app.listen(process.env.PORT, function() {
+  console.log(`Poll server is up on port ${process.env.PORT}`)
 });
 
