@@ -11,7 +11,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
   } : {}
 });
 
-//Comment this out to run on Heroku  Lines 15-18
+// Comment this out to run on Heroku  Lines 15-18
 // const sequelize = new Sequelize('AtlasMay2021', 'postgres', 'password', {
 //   host: 'localhost',
 //   dialect: 'postgres'
